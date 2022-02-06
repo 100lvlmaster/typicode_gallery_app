@@ -6,14 +6,14 @@ class PhotosRepository {
   const PhotosRepository();
   static final Dio _dio = Dio();
 
-  Future<Photo> photoById(String photoId) async {
+  Future<Photo> photoById(int photoId) async {
     final response = await _dio.get("${Constants.photosApi}/$photoId");
     return Photo.fromMap(response.data);
   }
 
   ///
   ///
-  Future<List<Photo>> photosByAlbum(String albumId) async {
+  Future<List<Photo>> photosByAlbum(int albumId) async {
     final response = await _dio.get("${Constants.photosApi}?albumId=$albumId");
     final photos = List.generate(
       response.data.length,

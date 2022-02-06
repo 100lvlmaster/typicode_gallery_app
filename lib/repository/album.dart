@@ -17,4 +17,11 @@ class AlbumRepository {
 
   ///
   ///
+  Future<Album> albumById(int id) async {
+    final response = await _dio.get("${Constants.albumsApi}/$id");
+    return Album.fromMap(response.data);
+  }
+
+  ///
+  ///
 }
